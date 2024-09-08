@@ -1,0 +1,22 @@
+name: Pull Request Workflow
+
+# Trigger the workflow on pull requests to the main branch
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    # Set up a job to run tests or build the project
+    - name: Run Tests
+      run: |
+        echo "Running tests..."
+        # Add your test or build commands here, e.g., npm install, python test, etc.

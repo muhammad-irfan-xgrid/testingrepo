@@ -1,22 +1,43 @@
 name: Pull Request Workflow
-
-# Trigger the workflow on pull requests to the main branch
+# Trigger the workflow on pull requests to the main branch.
 on:
   pull_request:
     branches:
-      - main
+      - main  # Run the workflow when a pull request is made to the `main` branch.
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    
+  lint:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu virtual environment.
+
     steps:
-    # Checkout the code
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    # Set up a job to run tests or build the project
-    - name: Run Tests
+    # Step 1: Checkout the current code in the repository.
+    - name: Checkout repository
+      uses: actions/checkout@v2  # Fetch the repository contents.
+
+    # Step 2: Install Terraform CLI for managing infrastructure as code.
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v1  # Install Terraform using the official HashiCorp setup action.
+      with:
+        terraform_version: 1.1.5  # Specify the version of Terraform to use (optional).
+
+    # Step 3: Run Terraform Format (terraform fmt) to check code formatting.
+    # This will ensure that all Terraform files follow the standard formatting rules.
+    - name: Check Terraform Formatting
+      run: terraform fmt -check  # Check if the Terraform files are formatted correctly.
+
+    # Step 4: Run Terraform Validate to check if the configuration is syntactically valid.
+    # This ensures that the configuration is ready for provisioning and free from syntax errors.
+    - name: Validate Terraform
+      run: terraform validate  # Validate the Terraform configuration.
+
+    # Step 5: Install TFLint for checking Terraform code quality and best practices.
+    # TFLint is a popular linter that provides helpful feedback on Terraform files.
+    - name: Install TFLint
       run: |
-        echo "Running tests..."
-        # Add your test or build commands here, e.g., npm install, python test, etc.
+        curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash  # Install TFLint.
+
+    # Step 6: Run TFLint to lint the Terraform configuration.
+    # This will check for potential issues and help enforce best practices.
+    - name: Run TFLint
+      run: tflint  # Lint Terraform files using TFLint.
+

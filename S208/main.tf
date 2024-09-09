@@ -6,3 +6,4 @@ resource "aws_instance" "example" {
   ami           = "ami-0c55b159cbfafe1f0"
   instance_type = "sa2.micro"
 }
+asbjfioojfoj

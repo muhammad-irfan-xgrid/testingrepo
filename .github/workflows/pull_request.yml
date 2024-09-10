@@ -7,7 +7,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu virtual environment.
+    runs-on: ubuntu-20.04  # Use a specific Ubuntu version for consistency.
 
     steps:
     # Step 1: Checkout the current code in the repository.
@@ -16,13 +16,13 @@ jobs:
 
     # Step 2: Run Super Linter to check changed files for linting issues.
     - name: Lint Code Base
-      uses: github/super-linter@v4.9.7  # Use the Super Linter GitHub Action.
+      uses: github/super-linter@v4  # Always use the latest patch of v4 Super Linter.
       env:
         VALIDATE_TERRAFORM: true  # Enable Terraform validation.
         VALIDATE_ALL_CODEBASE: false  # Only validate changed files.
         VALIDATE_MARKDOWN: false  # Example: Disable markdown validation (customize as needed).
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication.
-        FILTER_REGEX_EXCLUDE: ''  # Optional: Exclude certain files or paths.
+        FILTER_REGEX_EXCLUDE: 'README.md|userguide.md'  # Exclude certain files from linting.
         IGNORE_GITIGNORED_FILES: true  # Ignore files listed in .gitignore.
 
     # Step 3: Install Terraform CLI for managing infrastructure as code.

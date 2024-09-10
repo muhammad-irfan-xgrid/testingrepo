@@ -1,43 +1,49 @@
 name: Pull Request Workflow
-# Trigger the workflow on pull requests to the main branch.
+
 on:
   pull_request:
     branches:
-      - main  # Run the workflow when a pull request is made to the `main` branch.
+      - main  # Trigger on pull requests to the `main` branch.
 
 jobs:
   lint:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu virtual environment.
+    runs-on: ubuntu-20.04  # Use a specific Ubuntu version for consistency.
 
     steps:
     # Step 1: Checkout the current code in the repository.
     - name: Checkout repository
       uses: actions/checkout@v2  # Fetch the repository contents.
 
-    # Step 2: Install Terraform CLI for managing infrastructure as code.
+    # Step 2: Run Super Linter to check changed files for linting issues.
+    - name: Lint Code Base
+      uses: github/super-linter@v4  # Always use the latest patch of v4 Super Linter.
+      env:
+        VALIDATE_TERRAFORM: true  # Enable Terraform validation.
+        VALIDATE_ALL_CODEBASE: false  # Only validate changed files.
+        VALIDATE_MARKDOWN: false  # Example: Disable markdown validation (customize as needed).
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication.
+        FILTER_REGEX_EXCLUDE: 'README.md|userguide.md'  # Exclude certain files from linting.
+        IGNORE_GITIGNORED_FILES: true  # Ignore files listed in .gitignore.
+
+    # Step 3: Install Terraform CLI for managing infrastructure as code.
     - name: Install Terraform
       uses: hashicorp/setup-terraform@v1  # Install Terraform using the official HashiCorp setup action.
       with:
         terraform_version: 1.1.5  # Specify the version of Terraform to use (optional).
 
-    # Step 3: Run Terraform Format (terraform fmt) to check code formatting.
-    # This will ensure that all Terraform files follow the standard formatting rules.
+    # Step 4: Run Terraform Format (terraform fmt) to check code formatting.
     - name: Check Terraform Formatting
       run: terraform fmt -check  # Check if the Terraform files are formatted correctly.
 
-    # Step 4: Run Terraform Validate to check if the configuration is syntactically valid.
-    # This ensures that the configuration is ready for provisioning and free from syntax errors.
+    # Step 5: Run Terraform Validate to check if the configuration is syntactically valid.
     - name: Validate Terraform
       run: terraform validate  # Validate the Terraform configuration.
 
-    # Step 5: Install TFLint for checking Terraform code quality and best practices.
-    # TFLint is a popular linter that provides helpful feedback on Terraform files.
+    # Step 6: Install TFLint for checking Terraform code quality and best practices.
     - name: Install TFLint
       run: |
         curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash  # Install TFLint.
 
-    # Step 6: Run TFLint to lint the Terraform configuration.
-    # This will check for potential issues and help enforce best practices.
+    # Step 7: Run TFLint to lint the Terraform configuration.
     - name: Run TFLint
       run: tflint  # Lint Terraform files using TFLint.
-

@@ -45,12 +45,3 @@ jobs:
           VALIDATE_TERRAFORM: true  # Lint Terraform configurations
           VALIDATE_HADOLINT: true   # Lint Dockerfiles (if applicable)
           VALIDATE_CLOUDFORMATION: true  # Lint AWS CloudFormation templates (if applicable)
-
-          # Disable unnecessary linters
-          VALIDATE_JSON: false  # Disable JSON linting
-          VALIDATE_YAML: false  # Disable YAML linting
-          VALIDATE_MARKDOWN: false  # Disable Markdown linting
-          VALIDATE_JSCPD: false  # Disable duplicate code detection
-          VALIDATE_NATURAL_LANGUAGE: false  # Disable natural language linting
-          VALIDATE_TERRAFORM_TERRASCAN: false  # Disable Terrascan for Terraform
-          VALIDATE_CHECKOV: false  # Disable Checkov for Terraform security scanning

@@ -39,9 +39,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           # Disable linting all code types by default
-          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_ALL_CODEBASE: true
           
-          # Enable specific linters
-          VALIDATE_TERRAFORM: true  # Lint Terraform configurations
-          VALIDATE_HADOLINT: true   # Lint Dockerfiles (if applicable)
-          VALIDATE_CLOUDFORMATION: true  # Lint AWS CloudFormation templates (if applicable)

@@ -27,7 +27,7 @@ jobs:
 
       # Step to run Super-Linter
       - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v7
+        uses: super-linter/super-linter@v7
         env:
           # The default branch to compare against (for pull request reviews)
           DEFAULT_BRANCH: main
@@ -40,4 +40,10 @@ jobs:
 
           # Only validate Terraform files
           VALIDATE_ALL_CODEBASE: false
-             
+          ONLY_LINTERS: terraform
+          
+          # Disable all other linters
+          DISABLE_LINTERS: python,javascript,html,css,markdown,yaml,java,cpp,go,ruby,swift,typescript,php, etc
+
+          # Optional: Set to true to also automatically fix linting issues
+          FIX: true

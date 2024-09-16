@@ -38,4 +38,9 @@ jobs:
           # GitHub token for accessing repository contents
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          VALIDATE_ALL_CODEBASE: true  # Disable linting of all code types by default          
+          # Only validate Terraform files
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_TERRAFORM: true
+          
+          # Additional settings for Terraform linting
+          TERRAFORM_USE: terraform       

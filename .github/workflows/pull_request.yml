@@ -41,7 +41,7 @@ jobs:
           # Only validate Terraform files
           VALIDATE_ALL_CODEBASE: false
           
-          # Enable specific linters
-          VALIDATE_TFLINT: true  # Enable TFLint for Terraform linting
-          VALIDATE_TERRASCAN: true  # Enable Terrascan for security scanning
-          VALIDATE_CHECKOV: true  # Enable Checkov for security scanning
+          VALIDATE_JSON: true
+          VALIDATE_PYTHON: true
+          VALIDATE_TERRAFORM_TFLINT: true
+          VALIDATE_YAML: true

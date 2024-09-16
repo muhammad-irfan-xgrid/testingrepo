@@ -41,7 +41,6 @@ jobs:
           # Only validate Terraform files
           VALIDATE_ALL_CODEBASE: false
           
-          VALIDATE_JSON: true
-          VALIDATE_PYTHON: true
           VALIDATE_TERRAFORM_TFLINT: true
-          VALIDATE_YAML: true
+          VALIDATE_TERRASCAN: true  
+          VALIDATE_CHECKOV: true  

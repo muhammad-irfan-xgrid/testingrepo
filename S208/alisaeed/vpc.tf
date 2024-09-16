@@ -1,18 +1,17 @@
-// Create VPC
-# https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest
-module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
-  # parameters
-  name = var.vpc_name
-  cidr = var.vpc_cidr
-  azs             = [var.availability_zone1, var.availability_zone2]
-  private_subnets = [var.private_subnet1_cidr, var.private_subnet2_cidr]
-  public_subnets  = [var.public_subnet1_cidr, var.public_subnet2_cidr]
-  enable_nat_gateway      = var.enable_nat_gateway
-  enable_vpn_gateway      = var.enable_vpn_gateway
-  single_nat_gateway      = var.single_nat_gateway
-  one_nat_gateway_per_az  = var.one_nat_gateway_per_az
+terraform {
+  required_version = ">= 1.0.0"  # Specify the minimum version required
+}
+
+provider "aws" {
+  region = "us-west-2"  # Adjust this to your preferred region
+}
+
+# Create VPC
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"  # Adjust CIDR block as needed
+  enable_dns_support = true
+  enable_dns_hostnames = true
   tags = {
-    Name = var.vpc_name
+    Name = "main-vpc"
   }
 }

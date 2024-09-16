@@ -1,10 +1,4 @@
-aws_instance_type = "t2.micro"
-
-key_name = "key_pair"
-
 region = "us-west-1"
-
-asl_name = "s208_lc"
 
 vpc_name = "s208_vpc"
 
@@ -14,161 +8,13 @@ availability_zone1 = "us-west-1a"
 
 availability_zone2 = "us-west-1c"
 
-public_subnet1_cidr = "10.0.100.0/24"
-
 private_subnet1_cidr = "10.0.0.0/24"
-
-public_subnet2_cidr = "10.0.101.0/24"
 
 private_subnet2_cidr = "10.0.1.0/24"
 
-all_allowed_cidr = "0.0.0.0/0"
+public_subnet1_cidr = "10.0.100.0/24"
 
-db_name = "s208db"
-
-user_name = "admin"
-
-password = "password"
-
-public_security_group = "s208_public_sg"
-
-private_security_group = "s208_private_sg"
-
-aws_autoscaling_group = "s208_asg"
-
-aws_autoscaling_policy = "s208_as_policy"
-
-aws_lb_target_group_name = "s208-asg"
-
-default_action_lb = "forward"
-
-success_code = "200"
-
-launch_configuration = "s208_lc"
-
-elb_name = "s208-elb"
-
-aws_load_balancer_type = "application"
-
-asp_high = "policy_high"
-
-asp_low = "policy_low"
-
-low_memory_alarm = "alarm_low_memory"
-
-high_memory_alarm = "alarm_high_memory"
-
-low_cpu_alarm = "alarm_low_cpu"
-
-high_cpu_alarm = "alarm_high_cpu"
-
-scale_adj_high = 1
-
-scale_adj_low = -1
-
-adj_type = "ChangeInCapacity"
-
-policy_type = "SimpleScaling"
-
-cooldown = 180
-
-comp_op_high = "GreaterThanThreshold"
-
-comp_op_low = "LessThanThreshold"
-
-eval_periods = "2"
-
-metric_name_cpu = "CPUUtilization"
-
-metric_name_memory = "DiskReadOps"
-
-namespace = "AWS/EC2"
-
-period = "300"
-
-statistic = "Average"
-
-cpu_threshold_high = "40"
-
-cpu_threshold_low = "30"
-
-memory_threshold_high = "60"
-
-memory_threshold_low = "50"
-
-high_cpu_alarm_description = "Notify on CPU usage greater than 40%"
-
-low_cpu_alarm_description = "Notify on CPU usage less than 30%"
-
-high_memory_alarm_description = "Notify on Memory usage greater than 60%"
-
-low_memory_alarm_description = "Notify on Memory usage less than 50%"
-
-asg_min_size = 1
-
-asg_max_size = 2
-
-asg_desired_size = 1
-
-health_check_grace_period = 300
-
-health_check_type = "ELB"
-
-wait_for_capacity_timeout = 0
-
-force_delete = true
-
-port_80 = 80
-
-port_22 = 22
-
-port_0 = 0
-
-port_3306 = 3306
-
-http_protocol = "HTTP"
-
-tcp_protocol = "tcp"
-
-protocol-1 = "-1"
-
-public_security_group_description = "Allow TLS inbound traffic"
-
-private_security_group_description = "Allow inside traffic from public subnet of VPC"
-
-un_healthy_threshold = 2
-
-timeout = 2
-
-interval = 5
-
-target = "HTTP:80/"
-
-db_engine = "mysql"
-
-db_engine_version = "5.7"
-
-db_instance_class = "db.t3.micro"
-
-db_allocated_storage = "10"
-
-db_port = "3306"
-
-db_tag = "s208-rds"
-
-skip_final_snapshot = true
-
-multi_az = true
-
-create_random_password = false
-
-create_monitoring_role = false
-
-create_db_subnet_group = true
-
-deletion_protection = false
-
-db_family = "mysql5.7"
+public_subnet2_cidr = "10.0.101.0/24"
 
 enable_nat_gateway = true
 

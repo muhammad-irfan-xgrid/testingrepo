@@ -38,6 +38,10 @@ jobs:
           # GitHub token for accessing repository contents
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          # Disable linting all code types by default
-          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ALL_CODEBASE: false  # Disable linting of all code types by default
+
+          # Enable specific linters
+          VALIDATE_TFLINT: true  # Enable TFLint for Terraform linting
+          VALIDATE_TERRASCAN: true  # Enable Terrascan for security scanning
+          VALIDATE_CHECKOV: true  # Enable Checkov for security scanning
           

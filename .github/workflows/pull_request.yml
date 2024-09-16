@@ -40,10 +40,8 @@ jobs:
 
           # Only validate Terraform files
           VALIDATE_ALL_CODEBASE: false
-          ONLY_LINTERS: terraform
           
-          # Disable all other linters
-          DISABLE_LINTERS: python,javascript,html,css,markdown,yaml,java,cpp,go,ruby,swift,typescript,php, etc
-
-          # Optional: Set to true to also automatically fix linting issues
-          FIX: true
+          # Enable specific linters
+          VALIDATE_TFLINT: true  # Enable TFLint for Terraform linting
+          VALIDATE_TERRASCAN: true  # Enable Terrascan for security scanning
+          VALIDATE_CHECKOV: true  # Enable Checkov for security scanning

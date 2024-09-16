@@ -41,7 +41,8 @@ jobs:
           VALIDATE_ALL_CODEBASE: false  # Disable linting of all code types by default
 
           # Enable specific linters
+          VALIDATE_CHECKOV: true  # Enable Checkov for security scanning
           VALIDATE_TFLINT: true  # Enable TFLint for Terraform linting
           VALIDATE_TERRASCAN: true  # Enable Terrascan for security scanning
-          VALIDATE_CHECKOV: true  # Enable Checkov for security scanning
+          
           

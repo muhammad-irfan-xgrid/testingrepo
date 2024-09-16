@@ -14,5 +14,5 @@ module "vpc" {
   one_nat_gateway_per_az  = var.one_nat_gateway_per_az
   tags = {
     Name = var.vpc_name
-  }
+  
 }

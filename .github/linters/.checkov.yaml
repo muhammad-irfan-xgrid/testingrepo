@@ -1,0 +1,5 @@
+---
+# CKV_TF_1: We use TFC Registry - "Ensure Terraform module sources use a commit hash"
+#   Ref: https://github.com/bridgecrewio/checkov/issues/5366
+# CKV_TF_2: We use TFC Registry - "Ensure Terraform module sources use a tag with a version number"
+skip-check: CKV_TF_1,CKV_TF_2
